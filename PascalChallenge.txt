@@ -1,0 +1,104 @@
+{
+Author : Sunil Nandikanti,
+
+Description :
+           This is a program to simulate for certain number of days and
+           generate data to calaculate the ratio of half pills to pills.
+
+
+}
+program halfPill;
+
+const
+  totalPills=10,numPOs=2;
+
+       var i,j,k,l,m: integer;
+       pill50: array[1..50] of integer;
+       pill100: array[1..100] of integer;
+       s1,s2,s3,s4,s5,result50: array[1..10] of integer;
+       s6,s7,s8,s9,s10,result100: array[1..10] of integer;
+       halfpillratio: real;
+       lenCount:integer=0;
+       leftOverFullPills,leftOverHalfPills: integer;
+
+procedure fillData50;           { procedure to fill data to represent 50 full pills}
+begin
+  for i:=1 to totalPills do
+  pill50[i]:=1;
+  end;
+
+procedure fillData100;           { procedure to fill data to represent 100 full pills}
+begin
+  for j:=1 to totalPills do
+  pill100[i]:=1;
+  end;
+
+function calculateRatio(days:integer,noOfPills:integer): result50;
+begin
+leftOverFullPills:=noOfPills
+leftOverHalfPills:=0;
+
+{day 1}
+halfpillratio:=leftOverHalfPills/(leftOverFullPills+leftOverHalfPills);
+result50[0]:=halfpillratio;
+{for remaning days}
+for l:=1 to days do
+if(leftOverFullPills <> 0 and leftOverHalfPills <> 0) then
+begin
+picked:=random(numPos);
+if(picked=1 AND leftOverFullPills <> 0) then
+halfpillratio:=leftOverHalfPills/(leftOverFullPills+leftOverHalfPills);
+leftOverHalfPills:=leftOverHalfPills+1;
+leftOverFullPills:=leftOverFullPills-1;
+result50[l]:=halfpillratio;
+
+end;
+end;
+
+procedure calculateAverage50Pills; {Calculate the averages on day1,day2, day 3 and so on}
+begin
+     for j:=0 to totalDays do
+     avg:=(s1[j]+s2[j]+s3[j]+s4[j])/4;     {calaculating average}
+     s5[j]:=avg;                           {storing average  in new array}
+     readln();
+end;
+
+procedure calculateAverage100Pills; {Calculate the averages on day1,day2, day 3 and so on}
+begin
+     for j:=0 to totalDays do
+     avg:=(s6[j]+s7[j]+s8[j]+s9[j])/4;     {calaculating average}
+     s10[j]:=avg;                           {storing average  in new array}
+     readln();
+end;
+
+procedure displayDataSeries50;  {procedure to diplay the ratios for 5 iterations}
+begin
+writeln('Displaying the half pill ratios for 5 iterations for 50 pills and 100 days.');
+writeln('|Iteration 1   |','|Iteration 2   |','|Iteration 3   |','|Iteration 4   |','|Iteration 5   |');
+for m:=0 to 99 do
+    writeln(s1[m],'   ',s2[m],'   ',s3[m],'   ',s4[m],'   ',s5[m]);
+    writeln();
+    readln();
+end;
+
+procedure displayDataSeries100;  {procedure to diplay the ratios for 5 iterations}
+begin
+writeln('Displaying the half pill ratios for 5 iterations for 100 pills and 200 days.');
+writeln('|Iteration 1   |','|Iteration 2   |','|Iteration 3   |','|Iteration 4   |','|Iteration 5   |');
+for m:=0 to 199 do
+    writeln(s6[m],'   ',s7[m],'   ',s8[m],'   ',s9[m],'   ',s10[m]);
+    writeln();
+    readln();
+end;
+
+begin
+fillData50;   {calling procedure to fill data with full pills}
+
+calculateAverage50Pills;   {calling procedure to calculate averages for 50 pills}
+calculateAverage100Pills;  {calling procedure to calculate averages for 100 pills}
+dispalyDataSeries50;        {calling procedure to display half pills ratios for 50 pills}
+dispalyDataSeries100;       {calling procedure to display half pills ratios for 100 pills}
+
+readln();
+
+end.
